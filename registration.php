@@ -33,9 +33,9 @@ Registration Details
 <?php
 
 $sname = 'localhost';
-$uname= 'greenclu_admin';
-$passwd = 'greenclu_admin';
-$dbname = 'greenclu_prakriti';
+$uname= 'greenclu_root';
+$passwd = 'rootpass';
+$dbname = 'greenclu_db1';
 
 $con=new mysqli($sname,$uname,$passwd,$dbname);
 

@@ -1,9 +1,9 @@
     
 <?php
 $sname="localhost";
-$uname="greenclu_admin";
-$passwd="greenclu_admin";
-$dbname="greenclu_prakriti";
+$uname="greenclu_root";
+$passwd="rootpass";
+$dbname="greenclu_db1";
 $conn=new mysqli($sname,$uname,$passwd,$dbname);
 if($conn->connect_error)
 {
@@ -16,11 +16,65 @@ $email=$_POST['email'];
 $phone=$_POST['phone'];
 $college=$_POST['college'];
 $regtype=$_POST['regtype'];
+$event1 = $_POST['check'];
+$event2 = $_POST['check'];
+$event3 = $_POST['check'];
+$event4 = $_POST['check'];
+$event5 = $_POST['check'];
+$event6 = $_POST['check'];
+$event7 = $_POST['check'];
 
+$checkbox1 = $_POST['vehicle'];
+    $chk="";  
+    foreach($checkbox1 as $chk1)  
+       {  
+          $chk.= $chk1.",";  
+       }  
 
- $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `regtype`) VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','$regtype')";
-    if ($conn->query($sql) === TRUE) {
+       $sql = "INSERT INTO registration(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`,`events`)VALUES( '$firstname','$lastname','$gender','$email','$phone','$college','$chk' )";
+       if ($conn->query($sql) === TRUE) {
         $last_id = $conn->insert_id; }
+      // if(mysqli_query($conn,$sql)) {
+
+    //echo 'Data added sucessfully';
+ 
+else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+/*if($event1 == 'Ppt')
+{
+ $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `PPT`,'GREEN_ORA','VERSEITE','LIGHTS','ARTS','MIND','WORK') VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','Yes','No','No','No','No','No','No')";
+}
+
+if($event2 == '')
+{
+ $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `PPT`,'GREEN_ORA','VERSEITE','LIGHTS','ARTS','MIND','WORK') VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','No','Yes','No','No','No','No','No')";
+}
+if($event3 != ' ')
+{
+ $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `PPT`,'GREEN_ORA','VERSEITE','LIGHTS','ARTS','MIND','WORK') VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','No','No','Yes','No','No','No','No')";
+}
+if($event4 != ' ')
+{
+ $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `PPT`,'GREEN_ORA','VERSEITE','LIGHTS','ARTS','MIND','WORK') VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','No','No','No','Yes','No','No','No')";
+}
+if($event5 != ' ')
+{
+ $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `PPT`,'GREEN_ORA','VERSEITE','LIGHTS','ARTS','MIND','WORK') VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','No','No','No','No','Yes','No','No')";
+}
+if($event6 != ' ')
+{
+ $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `PPT`,'GREEN_ORA','VERSEITE','LIGHTS','ARTS','MIND','WORK') VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','No','No','No','No','No','Yes','No')";
+}
+if($event7 != ' ')
+{
+ $sql = "INSERT INTO `registration`(`firstname`, `lastname`,`gender`, `email`, `phone`,`college`, `PPT`,'GREEN_ORA','VERSEITE','LIGHTS','ARTS','MIND','WORK') VALUES ('$firstname','$lastname','$gender','$email','$phone','$college','No','No','No','No','No','No','Yes')";
+}
+
+    if ($conn->query($sql) === TRUE) {
+        $last_id = $conn->insert_id; }*/
+
 ?>
 <html lang="en">
 <head>
@@ -48,7 +102,7 @@ $regtype=$_POST['regtype'];
           <p>Successfully registered</p>
           <p>Your Unique ID : <strong><?php echo "GCGCT_",$last_id;?></strong></p><p>(Please note your Unique ID.)</p>
           <br>
-          
+        <p style="color:red;">Instructions: Registration is successful only if the payment is made...Kindly make the payment as soon as possible.</p>
         
         </div>
         <div class="modal-footer">

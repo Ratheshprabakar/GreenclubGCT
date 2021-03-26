@@ -636,6 +636,17 @@ input {
   padding-bottom: 65px;
 }
 
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+
 @media (max-width: 767px) {
   .card-4 .card-body {
     padding: 50px 40px;
