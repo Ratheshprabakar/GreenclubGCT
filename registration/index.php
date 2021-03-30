@@ -1,9 +1,9 @@
     
 <?php
 $sname="localhost";
-$uname="greenclu_root";
-$passwd="rootpass";
-$dbname="greenclu_db1";
+$uname="***********";
+$passwd="**********";
+$dbname="********";
 $conn=new mysqli($sname,$uname,$passwd,$dbname);
 if($conn->connect_error)
 {
